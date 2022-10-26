@@ -1,0 +1,31 @@
+// Import Models
+const User = require('./User');
+const Budget = require('./Budget');
+const Expense = require('./Expense');
+
+User.hasMany(Budget, {
+    foreignKey: 'user_id',
+    onDelete: 'CASCADE',
+});
+
+Budget.belongsTo(User, {
+    foreignKey: 'user_id'
+});
+
+Budget.hasMany(Expense, {
+    foreignKey: 'budget_id', 
+    onDelete: 'CASCADE',
+});
+
+Expense.belongsTo(Budget, {
+    foreignKey: 'budget_id'
+});
+
+// Export all Model relationships
+module.exports = {
+    User, 
+    Budget, 
+    Expense
+};
+
+
