@@ -60,7 +60,7 @@ router.get('/', async (req, res) => {
 
     const user = userData.get({ plain: true });
 
-    res.render('dash', {
+    res.render('dashboard', {
       ...user,
       logged_in: true
     });
@@ -76,7 +76,7 @@ router.get('/login', (req, res) => {
     return;
   }
 
-//   res.render('login');
+  res.render('login');
 });
 
 module.exports = router;
