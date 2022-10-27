@@ -8,6 +8,11 @@ User.hasMany(Budget, {
     onDelete: 'CASCADE',
 });
 
+// User.hasMany(Expense, {
+//     foreignKey: 'user_id',
+//     onDelete: 'CASCADE',
+// });
+
 Budget.belongsTo(User, {
     foreignKey: 'user_id'
 });
@@ -20,6 +25,10 @@ Budget.hasMany(Expense, {
 Expense.belongsTo(Budget, {
     foreignKey: 'budget_id'
 });
+
+// Expense.belongsTo(User, {
+//     foreignKey: 'user_id'
+// });
 
 // Export all Model relationships
 module.exports = {

@@ -14,9 +14,9 @@ Budget.init(
         name: {
             type: DataTypes.STRING, 
             allowNull: false, 
-            validate: {
-                isAlphanumeric: true
-            },
+            // validate: {
+            //     isAlphanumeric: true
+            // },
         },
         budget_limit: {
             type: DataTypes.DECIMAL,

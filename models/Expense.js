@@ -14,9 +14,9 @@ Expense.init(
     expense_name: {
       type: DataTypes.STRING,
       allowNull: false,
-      validate: {
-        isAlphanumeric: true,
-      },
+      // validate: {
+      //   isAlphanumeric: true,
+      // },
     },
     expense_description: {
       type: DataTypes.STRING,
@@ -36,6 +36,13 @@ Expense.init(
         key: "id",
       },
     },
+    // user_id: {
+    //   type: DataTypes.INTEGER, 
+    //   references: {
+    //       model: 'user', 
+    //       key: 'id'
+    //   },
+    // },
   },
   {
     sequelize,
