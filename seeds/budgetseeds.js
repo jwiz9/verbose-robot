@@ -18,6 +18,6 @@ const budgetSeeds = [
     },
 ]
 
-const seedBudgets = () => Expense.bulkCreate(budgetSeeds);
+const seedBudgets = () => Budget.bulkCreate(budgetSeeds);
 
 module.exports = seedBudgets
