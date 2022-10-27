@@ -2,6 +2,24 @@ const router = require('express').Router();
 const { Expense } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+router.get('/', (req, res) => {
+    Expense.findAll({
+        where: {
+            budget_id: 1
+        },
+        
+    })
+.then(expenseData => {
+    const expenses = expenseData.map(expense => expense.get({ plain: true }));
+    const logged_in = req.session.logged_in;
+    console.log(expenses)
+})
+.catch (err => {
+    console.log(err);
+    res.status(500).json(err);
+})     
+});
+
 router.post('/', withAuth, async (req, res) => {
   try {
     const newExpense = await Expense.create({
