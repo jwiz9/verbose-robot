@@ -14,7 +14,23 @@ td3Input.classList.add("expense_description");
 let expensetd4 = document.createElement("td");
 let td4Input = document.createElement("input");
 td4Input.classList.add("expense_amount");
+let sumTotal = 0;
+let totalArray = [];
+let sum = 0;
 
+let allExpense = document.querySelectorAll(".expense-amount");
+allExpense.forEach((element) => {
+  sumTotal += element.innerHTML;
+  totalArray = sumTotal.split("");
+});
+
+console.log(totalArray);
+
+totalArray.forEach((element) => element * 1);
+// for (let i = 0; i < totalArray.length; i++) {
+//   sum += totalArray[i] * i;
+// }
+console.log(sum);
 // Event handler to add new expense - let input's for new expenses appear
 const newExpenseHandler = (event) => {
   console.log("hello");
@@ -41,14 +57,15 @@ const confirmExpenseHandler = async (event) => {
     .querySelector(".expense_description")
     .value.trim();
   let expense_amount = document.querySelector(".expense_amount").value.trim();
+  // let budget_id = document.getElementById("budget-id").getAttribute("data-id");
   let budget_id = 1;
 
   console.log(
-    expense_date &&
-      expense_name &&
-      expense_description &&
-      expense_amount &&
-      budget_id
+    expense_date,
+    expense_name,
+    expense_description,
+    expense_amount,
+    budget_id
   );
   if (expense_date && expense_name && expense_amount) {
     const response = await fetch(`/api/expense`, {
@@ -68,7 +85,7 @@ const confirmExpenseHandler = async (event) => {
 
     if (response.ok) {
       console.log("======\n new expense created \n =============");
-      document.location.replace(`/dash`);
+      location.reload();
     }
   }
 };
@@ -79,4 +96,4 @@ document
 
 document
   .getElementById("confirm-expense-button")
-  .addEventListener("submit", confirmExpenseHandler);
+  .addEventListener("click", confirmExpenseHandler);

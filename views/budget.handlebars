@@ -1,6 +1,7 @@
 <div class="container text-center">
   <div class="card mt-5 p-4">
-    <h2 class="my-3">budget name</h2>
+    <h2 class="my-3">{{budget.name}}</h2>
+    <p id="budget-id" data-id={{budget.id}}>{{budget.id}}</p>
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
         <div class="bg-light p-4 rounded">{{budget.budget_limit}}</div>
@@ -28,7 +29,7 @@
               <td>{{expense_date}}</td>
               <td>{{expense_name}}</td>
               <td>{{expense_description}}</td>
-              <td>{{expense_amount}}</td>
+              <td class="expense-amount" data-expense="{{expense-amount}}">{{expense_amount}}</td>
             </tr>
           {{/each}}
 
