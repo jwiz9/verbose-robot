@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+// const { DataTypes } = require("sequelize/types");
 const sequelize = require("../config/connection");
 
 class Expense extends Model {}
@@ -28,6 +29,10 @@ Expense.init(
       validate: {
         isDate: true,
       },
+    },
+    expense_amount: {
+      type: DataTypes.DECIMAL,
+      allowNull: false
     },
     budget_id: {
       type: DataTypes.INTEGER,
