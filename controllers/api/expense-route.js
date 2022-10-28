@@ -27,10 +27,10 @@ router.post("/", withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-    console.log(newExpense);
+    console.log("THIS IS A NEW EXPENSE" + newExpense);
     res.status(200).json(newExpense);
   } catch (err) {
-    console.log(err);
+    console.log("THISIS AN EXPENSE ERROR" + err);
     res.status(400).json(err);
   }
 });

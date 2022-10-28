@@ -1,6 +1,9 @@
 let confirmExpenseBtn = document.getElementById("confirm-expense-button");
 confirmExpenseBtn.style.visibility = "hidden";
 
+let budget_id = document.getElementById("budget-id").getAttribute("data-id");
+console.log(budget_id);
+
 let newExpenseRow = document.createElement("tr");
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
@@ -64,16 +67,19 @@ const confirmExpenseHandler = async (event) => {
     .value.trim();
   let expense_amount = document.querySelector(".expense_amount").value.trim();
   // let budget_id = document.getElementById("budget-id").getAttribute("data-id");
-  let budget_id = 1;
+
+  // let budget_id = 1;
 
   console.log(
-    expense_date,
-    expense_name,
-    expense_description,
-    expense_amount,
-    budget_id
+    "is this working======????=====" +
+      expense_date +
+      expense_name +
+      expense_description +
+      expense_amount +
+      budget_id
   );
-  if (expense_date && expense_name && expense_amount) {
+
+  if (expense_date && expense_name && expense_amount && budget_id) {
     const response = await fetch(`/api/expense`, {
       method: "POST",
       body: JSON.stringify({
@@ -88,11 +94,25 @@ const confirmExpenseHandler = async (event) => {
       },
     });
     console.log("======\n we got your expense request \n =============");
+    console.log(response);
 
     if (response.ok) {
       console.log("======\n new expense created \n =============");
-      location.reload();
+      document.location.replace(`/dash/budget/${budget_id}`);
     }
+  }
+};
+
+const delButtonHandler = async (event) => {
+  const response = await fetch(`/dash/api/budget/${budget_id}`, {
+    method: "DELETE",
+  });
+  console.log("=======delete response received======");
+  console.log(response);
+  if (response.ok) {
+    document.location.replace("/dash");
+  } else {
+    alert(response.statusText);
   }
 };
 
@@ -103,3 +123,7 @@ document
 document
   .getElementById("confirm-expense-button")
   .addEventListener("click", confirmExpenseHandler);
+
+document
+  .getElementById("delete-button")
+  .addEventListener("click", delButtonHandler);

@@ -1,8 +1,8 @@
-const router = require('express').Router();
-const { Budget } = require('../../models');
-const withAuth = require('../../utils/auth');
+const router = require("express").Router();
+const { Budget } = require("../../models");
+const withAuth = require("../../utils/auth");
 
-router.post('/', withAuth, async (req, res) => {
+router.post("/", withAuth, async (req, res) => {
   try {
     const newBudget = await Budget.create({
       ...req.body,
@@ -15,7 +15,7 @@ router.post('/', withAuth, async (req, res) => {
   }
 });
 
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete("/:id", withAuth, async (req, res) => {
   try {
     const budgetData = await Budget.destroy({
       where: {
@@ -23,9 +23,9 @@ router.delete('/:id', withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
     });
-
+    console.log("========== BUDGET DATA:" + budgetData);
     if (!budgetData) {
-      res.status(404).json({ message: 'No budget found with this id!' });
+      res.status(404).json({ message: "No budget found with this id!" });
       return;
     }
 

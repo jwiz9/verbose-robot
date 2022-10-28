@@ -4,9 +4,9 @@ const withAuth = require("../utils/auth");
 
 router.get("/", withAuth, (req, res) => {
   Budget.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
+    where: {
+      user_id: req.session.user_id,
+    },
     // where: {
     //   user_id: 1,
     // },
@@ -59,7 +59,7 @@ router.get("/budget/:id", async (req, res) => {
     });
 
     const budget = budgetData.get({ plain: true });
-    console.log("============" + JSON.stringify(budget));
+    console.log("============this is budget data" + JSON.stringify(budget));
     res.render("budget", {
       budget,
       logged_in: req.session.logged_in,
