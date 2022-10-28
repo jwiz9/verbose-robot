@@ -79,4 +79,11 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+router.get("/build", (req, res) => {
+  res.render("buildbudget")
+})
+
+router.get("/budget", (req, res) => {
+  res.render("budget")
+})
 module.exports = router;
