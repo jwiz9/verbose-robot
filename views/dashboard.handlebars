@@ -1,0 +1,24 @@
+<div class="budget-form">
+    <section class="container my-5">
+
+        <div class="row justify-content-left">
+            <div class="col-12 col-md-8">
+                <h1>Welcome</h1>
+                <h5>You don't have any budgets set yet. Would you like to add one?</h5>
+                <button type="submit" id="budgetButton" class="btn btn-outline-warning">create budget</button>
+            </div>
+        </div>
+        {{#if budgets.length}}
+        <section class="flex-row justify-right">
+            {{#each budgets as |budget|}}
+            <section class="card">
+                <a href="/budget/{{id}}">
+                    <header>{{name}}</header>
+                    <h1>Budget: {{budget_limit}}</h1>
+                </a>
+            </section>
+            {{/each}}
+    </section>
+</div>
+{{/if}}
+<script src="/js/buildbudget.js"></script>
