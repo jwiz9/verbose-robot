@@ -4,12 +4,12 @@ const withAuth = require("../utils/auth");
 
 router.get("/", (req, res) => {
   Budget.findAll({
-      where: {
-        user_id: req.session.user_id
-      },
-    // where: {
-    //   user_id: 1,
-    // },
+      // where: {
+      //   user_id: req.session.user_id
+      // },
+    where: {
+      user_id: 1,
+    },
     //   attributes: [
     //     'id',
     //     'name',
