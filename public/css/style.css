@@ -6,3 +6,22 @@ padding: .75rem;
 .custom-text-color {
     color: #053F5C;
 } 
+
+.build-form{
+    margin-left: 55%;
+
+}
+
+
+.form-control{
+    width: fit-content;
+}
+
+.btn{
+    width: fit-content;
+}
+
+
+.build-text{
+    justify-content: left;
+}

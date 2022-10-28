@@ -1,36 +1,50 @@
 <div class="container text-center">
-    <div class="row justify-content-center">
-        <div class="col-lg-4 text-center border rounded m-5 p-5">
-          <h3>login:</h3>
-      
-          <form class="form login-form p-3">
-            <div class="form-group">
-              <input class="form-input text-center" type="text" id="username-login" placeholder="username" />
-            </div>
-            <div class="form-group">
-              <input class="form-input text-center" type="password" id="password-login" placeholder="password"/>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-warning custom-text-color mt-3" type="submit">login</button>
-            </div>
-          </form>
-        </div>
-        <div class="col-lg-4 text-center border rounded m-5 p-5">
-          <h3>create account:</h3>
-          <form class="form signup-form p-3">
-            <div class="form-group">
-              <input class="form-input text-center" type="text" id="username-signup" placeholder="enter a username" />
-            </div>
-            <div class="form-group">
-              <input class="form-input text-center" type="password" id="password-signup"  placeholder="enter a password"/>
-            </div>
-            <div class="form-group">
-              <button class="btn btn-warning custom-text-color mt-3" type="submit">signup</button>
-            </div>
-          </form>
-        </div>
-      </div>
-</div>
+  <div class="row justify-content-center">
+    <div class="col-lg-4 text-center border rounded m-5 p-5">
+      <h3>login:</h3>
 
+      <form class="form login-form p-3">
+        <div class="form-group">
+          <label for="email-login">email:</label>
+          <input class="form-input" type="text" id="email-login" />
+        </div>
+        <div class="form-group">
+          <label for="password-login">password:</label>
+          <input class="form-input" type="password" id="password-login" />
+        </div>
+        <div class="form-group">
+          <button
+            class="btn btn-warning custom-text-color"
+            type="submit"
+          >login</button>
+        </div>
+      </form>
+    </div>
+
+    <div class="col-lg-4 text-center border rounded m-5 p-5">
+      <h3>create account:</h3>
+      <form class="form signup-form">
+        <div class="form-group">
+          <label for="name-signup">name:</label>
+          <input class="form-input" type="text" id="name-signup" />
+        </div>
+        <div class="form-group">
+          <label for="email-signup">email:</label>
+          <input class="form-input" type="text" id="email-signup" />
+        </div>
+        <div class="form-group">
+          <label for="password-signup">password:</label>
+          <input class="form-input" type="password" id="password-signup" />
+        </div>
+        <div class="form-group">
+          <button
+            class="btn btn-warning custom-text-color"
+            type="submit"
+          >signup</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
 <script src="./js/login.js"></script>

@@ -2,14 +2,14 @@ const router = require("express").Router();
 const { Budget, User, Expense } = require("../models");
 const withAuth = require("../utils/auth");
 
-router.get("/", (req, res) => {
+router.get("/", withAuth, (req, res) => {
   Budget.findAll({
-      // where: {
-      //   user_id: req.session.user_id
-      // },
-    where: {
-      user_id: 1,
-    },
+      where: {
+        user_id: req.session.user_id
+      },
+    // where: {
+    //   user_id: 1,
+    // },
     //   attributes: [
     //     'id',
     //     'name',
@@ -47,22 +47,25 @@ router.get("/", (req, res) => {
 
 router.get("/budget/:id", async (req, res) => {
   try {
-    const budgetData = await Project.findByPk(req.params.id, {
+    const budgetData = await Budget.findByPk(req.params.id, {
       include: [
         {
           model: User,
-          attributes: ["name"],
+        },
+        {
+          model: Expense,
         },
       ],
     });
 
     const budget = budgetData.get({ plain: true });
-
+    console.log("============" + JSON.stringify(budget));
     res.render("budget", {
-      ...budget,
+      budget,
       logged_in: req.session.logged_in,
     });
   } catch (err) {
+    console.log(err);
     res.status(500).json(err);
   }
 });
