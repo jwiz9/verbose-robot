@@ -23,5 +23,5 @@ padding: .75rem;
 
 
 .build-text{
-    justify-content: left;
+    flex-direction: column;
 }
