@@ -37,7 +37,7 @@ router.get("/", withAuth, (req, res) => {
       const logged_in = req.session.logged_in;
       console.log(budgets);
 
-      res.render("dashboard", { budgets, logged_in });
+      res.render("dashboard", { budgets, logged_in: req.session.logged_in });
     })
     .catch((err) => {
       console.log(err);
@@ -107,7 +107,6 @@ router.get("/budget/:id", async (req, res) => {
 //       res.render('edit-budget', {
 //        budget,
 //        loggedIn,
-//        layout: 'main'
 //       });
 //     })
 //     .catch(err => {
