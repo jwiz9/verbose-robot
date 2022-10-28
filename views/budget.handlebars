@@ -1,0 +1,57 @@
+
+<div class="container text-center">
+  <div class="card mt-5 p-4">
+    <h2 class="my-3">budget name</h2>
+    <div class="row justify-content-center my-5">
+      <div class="col-md-3 m-2">
+        <div class="bg-light p-4 rounded">budget amount</div>
+      </div>
+      <div class="col-md-3 m-2">
+        <div class="bg-primary p-4 rounded">Total Spent</div>
+      </div>
+      <div class="col-md-3 m-2">
+        <div class="bg-warning p-4 rounded">Total Remaining</div>
+      </div>
+    </div>
+    <div class="table-responsive-sm">
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Date</th>
+            <th scope="col">Expense</th>
+            <th scope="col">Description</th>
+            <th scope="col">Amount</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each budget.expenses as |expense|}}
+            <tr>
+              <td>{{expense_date}}</td>
+              <td>{{expense_name}}</td>
+              <td>{{expense_description}}</td>
+              <td>{{amount}}</td>
+            </tr>
+          {{/each}}
+
+          <tr id="total-sum">
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Total Expenses: <br /> SUMAMOUNT</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-3">
+      <button
+        class="btn btn-warning custom-text-color"
+        id="new-expense-button"
+        type="submit"
+      >+ add expense</button>
+    </div>
+  </div>
+</div>
+
+<script src="/js/budget.js"></script>
+
+

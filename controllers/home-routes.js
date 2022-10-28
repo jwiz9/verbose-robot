@@ -1,6 +1,12 @@
-const router = require('express').Router();
-const { Budget, User } = require('../models');
-const withAuth = require('../utils/auth');
+const router = require("express").Router();
+const { Budget, User } = require("../models");
+const withAuth = require("../utils/auth");
+
+// 
+router.get("/", (req, res) => {
+  console.log("arriving at home");
+  res.render("login");
+});
 
 // router.get('/', async (req, res) => {
 //   try {
@@ -18,9 +24,9 @@ const withAuth = require('../utils/auth');
 //     const budgets = budgetData.map((project) => project.get({ plain: true }));
 
 //     // Pass serialized data and session flag into template
-//     res.render('homepage', { 
-//       budgets, 
-//       logged_in: req.session.logged_in 
+//     res.render('homepage', {
+//       budgets,
+//       logged_in: req.session.logged_in
 //     });
 //   } catch (err) {
 //     res.status(500).json(err);
@@ -50,37 +56,37 @@ const withAuth = require('../utils/auth');
 // });
 
 // Use withAuth middleware to prevent access to route
-router.get('/', async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     // Find the logged in user based on the session ID
     const userData = await User.findByPk(req.session.user_id, {
-      attributes: { exclude: ['password'] },
+      attributes: { exclude: ["password"] },
       include: [{ model: Budget }],
     });
 
     const user = userData.get({ plain: true });
 
-    res.render('dashboard', {
+    res.render("dashboard", {
       ...user,
-      logged_in: true
+      logged_in: true,
     });
   } catch (err) {
     res.status(500).json(err);
   }
 });
 
-router.get('/login', (req, res) => {
+router.get("/login", (req, res) => {
   // If the user is already logged in, redirect the request to another route
   if (req.session.logged_in) {
-    res.redirect('/dash');
+    res.redirect("/dash");
     return;
   }
 
-  res.render('login');
+  res.render("login");
 });
 
 router.get("/build", (req, res) => {
-  res.render("buildbudget")
-})
+  res.render("buildbudget");
+});
 
 module.exports = router;
