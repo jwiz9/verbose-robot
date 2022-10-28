@@ -32,7 +32,7 @@ Expense.init(
     },
     expense_amount: {
       type: DataTypes.DECIMAL,
-      allowNull: false
+      allowNull: false,
     },
     budget_id: {
       type: DataTypes.INTEGER,
@@ -42,9 +42,9 @@ Expense.init(
       },
     },
     // user_id: {
-    //   type: DataTypes.INTEGER, 
+    //   type: DataTypes.INTEGER,
     //   references: {
-    //       model: 'user', 
+    //       model: 'user',
     //       key: 'id'
     //   },
     // },
