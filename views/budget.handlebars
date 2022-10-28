@@ -1,10 +1,9 @@
-
 <div class="container text-center">
   <div class="card mt-5 p-4">
     <h2 class="my-3">budget name</h2>
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
-        <div class="bg-light p-4 rounded">budget amount</div>
+        <div class="bg-light p-4 rounded">{{budget.budget_limit}}</div>
       </div>
       <div class="col-md-3 m-2">
         <div class="bg-primary p-4 rounded">Total Spent</div>
@@ -23,35 +22,47 @@
             <th scope="col">Amount</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody id="new-expense">
           {{#each budget.expenses as |expense|}}
             <tr>
               <td>{{expense_date}}</td>
               <td>{{expense_name}}</td>
               <td>{{expense_description}}</td>
-              <td>{{amount}}</td>
+              <td>{{expense_amount}}</td>
             </tr>
           {{/each}}
 
-          <tr id="total-sum">
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>Total Expenses: <br /> SUMAMOUNT</td>
-          </tr>
         </tbody>
       </table>
+      {{! <div class="container">
+        <div class="row d-flex justify-content-end">
+          <div id="new-expense" class="col-3 d-flex">
+
+          </div>
+        </div>
+      </div> }}
+      <div class="container">
+        <div id="total-sum" class="row d-flex justify-content-end">
+          <div class="col-3">
+            <div>Total Expenses</div>
+            <div> SUM AMOUNT</div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="col-3">
       <button
         class="btn btn-warning custom-text-color"
         id="new-expense-button"
-        type="submit"
+        type="click"
       >+ add expense</button>
+      <button
+        class="btn btn-warning custom-text-color"
+        id="confirm-expense-button"
+        type="click"
+      >&#x2713</button>
     </div>
   </div>
 </div>
 
 <script src="/js/budget.js"></script>
-
-
