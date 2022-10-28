@@ -19,18 +19,24 @@ let totalArray = [];
 let sum = 0;
 
 let allExpense = document.querySelectorAll(".expense-amount");
+
 allExpense.forEach((element) => {
-  sumTotal += element.innerHTML;
-  totalArray = sumTotal.split("");
+  totalArray.push(element.innerHTML * 1);
+  console.log(typeof totalArray[0]);
 });
 
 console.log(totalArray);
 
-totalArray.forEach((element) => element * 1);
+totalArray.forEach((element) => (sum += element));
 // for (let i = 0; i < totalArray.length; i++) {
 //   sum += totalArray[i] * i;
 // }
 console.log(sum);
+const calulatedExpenses = (document.getElementById(
+  "calculatedExpenses"
+).innerHTML = sum.toFixed(2));
+totalArray.forEach((element) => (sum += element));
+
 // Event handler to add new expense - let input's for new expenses appear
 const newExpenseHandler = (event) => {
   console.log("hello");
