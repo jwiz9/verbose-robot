@@ -21,6 +21,5 @@ const newFormHandler = async (event) => {
     }
   };
 
-
-const newBudgetForm = document.querySelector('.new-budget-form')
-const buttonEl = document.querySelector('.budgetBtn');
+  const newBudgetForm = document.querySelector('.new-budget-form')
+  const buttonEl = document.querySelector('.budgetBtn');
