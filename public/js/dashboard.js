@@ -14,12 +14,31 @@ const newFormHandler = async (event) => {
     });
     
     if (response.ok) {
-        document.location.replace('/budgets');
+        document.location.replace('/dash');
       } else {
         alert('Failed to save budget');
       }
     }
   };
 
-  const newBudgetForm = document.querySelector('.new-budget-form')
-  const buttonEl = document.querySelector('.budgetBtn');
+  const delButtonHandler = async (event) => {
+    if (event.target.hasAttribute('data-id')) {
+      const id = event.target.getAttribute('data-id');
+  
+      const response = await fetch(`/api/budgets/${id}`, {
+        method: 'DELETE',
+      });
+  
+      if (response.ok) {
+        document.location.replace('/dash');
+      } else {
+        alert('Failed to delete project');
+      }
+    }
+  };
+  
+
+document
+  .querySelector('.budget-list')
+  .addEventListener('click', delButtonHandler);
+

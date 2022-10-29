@@ -1,24 +1,35 @@
-<div class="budget-form">
-    <section class="container my-5">
-
-        <div class="row justify-content-left">
-            <div class="col-12 col-md-8">
-                <h1>Welcome</h1>
-                <h5>You don't have any budgets set yet. Would you like to add one?</h5>
+<div class="row">
+  <div class="col-auto">
+    <h2>Welcome, {{name}}!</h2>
+                    <h5>This is where you will see all the budgets you have created. Click on a budget to view it's details.</h5>
                 <button onclick="window.location.href='/build';" id="budgetBtn" class="btn btn-warning">create budget</button>
             </div>
         </div>
-        {{#if budgets.length}}
-        <section class="flex-row justify-right">
+        {{!-- {{#if budgets.length}}
             {{#each budgets as |budget|}}
-            <section class="card">
+            <section class="card" style="width: 18rem;">
+                <div class="card-body"></div>
                 <a href="/budget/{{id}}">
-                    <header>{{name}}</header>
-                    <h1>Budget: {{budget_limit}}</h1>
+                    <h5 class="card-title">{{name}}</h5>
+                    <h6 class="card-subtitle mb-2">Budget: {{budget_limit}}</h6>
                 </a>
             </section>
             {{/each}}
     </section>
 </div>
+{{/if}} --}}
+{{#if budgets.length}}
+  <div class="container budget-list ">
+    <h3>Current Budgets:</h3>
+
+    {{#each budgets as |budget|}}
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h4><a href="/budget/{{budget.id}}">{{budget.name}}<br>${{budget_limit}}</a></h4>
+      </div>
+        <a href="#" class="btn btn-sm btn-danger" data-id="{{budget.id}}">DELETE</a>
+    </div>
+    {{/each}}
+  </div>
 {{/if}}
 <script src="./js/dashboard.js"></script>
