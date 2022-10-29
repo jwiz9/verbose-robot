@@ -27,10 +27,10 @@ router.post("/", withAuth, async (req, res) => {
       ...req.body,
       user_id: req.session.user_id,
     });
-    console.log(newExpense);
+    console.log("THIS IS A NEW EXPENSE" + newExpense);
     res.status(200).json(newExpense);
   } catch (err) {
-    console.log(err);
+    console.log("THISIS AN EXPENSE ERROR" + err);
     res.status(400).json(err);
   }
 });
@@ -40,17 +40,22 @@ router.delete("/:id", withAuth, async (req, res) => {
     const expenseData = await Expense.destroy({
       where: {
         id: req.params.id,
-        user_id: req.session.user_id,
+        // user_id: req.session.user_id,
       },
     });
+    console.log(`I AM EXPENSE DATA \n =============== \n ${expenseData}`);
 
     if (!expenseData) {
       res.status(404).json({ message: "No expense found with this id!" });
       return;
     }
+    console.log(
+      `I AM returning the next step of expense data \n =============== \n ${expenseData}`
+    );
 
     res.status(200).json(expenseData);
   } catch (err) {
+    console.log(`I AM THE EXPENSE DELET ERROR \n ========= ${err}`);
     res.status(500).json(err);
   }
 });
