@@ -8,22 +8,27 @@
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
         <div
-          class="budget-summary border p-4 rounded"
+          class="budget-summary custom-blockColor p-4 rounded"
           data-budget={{budget.budget_limit}}
         >
-          <h5 class="font-weight-bold">budget limit:</h5>
-          <h5 class="text-right"> ${{budget.budget_limit}}</h5></div>
+          <h5>budget limit:</h5>
+          <h5 class="text-right font-weight-bold">
+            ${{budget.budget_limit}}</h5></div>
       </div>
       <div class="col-md-3 m-2">
-        <div class="border p-4 rounded">
-          <h5 class="font-weight-bold"> total expenses: </h5>
-          <h5 class="expense-summary text-right"></h5>
+        <div class="custom-blockColor p-4 rounded">
+          <h5>expenses total: </h5>
+          <h5
+            class="expense-summary font-weight-bold text-right text-danger"
+          ></h5>
         </div>
       </div>
       <div class="col-md-3 m-2">
-        <div class="border p-4 rounded">
-          <h5 class="font-weight-bold">total remaining:</h5>
-          <h5 class="remaining-summary text-right"></h5>
+        <div class="custom-blockColor p-4 rounded">
+          <h5>remaining total:</h5>
+          <h5
+            class="remaining-summary font-weight-bold text-right text-info"
+          ></h5>
         </div>
       </div>
     </div>
@@ -32,23 +37,23 @@
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">Date</th>
-            <th scope="col">Expense</th>
-            <th scope="col">Description</th>
-            <th scope="col">Amount</th>
+            <th scope="col"><h5>Date</h5></th>
+            <th scope="col"><h5>Expense</h5></th>
+            <th scope="col"><h5>Description</h5></th>
+            <th scope="col"><h5>Cost</h5></th>
           </tr>
         </thead>
         <tbody id="new-expense">
           {{#each budget.expenses as |expense|}}
             <tr>
-              <td><button
-                  class="delete-expense-button btn btn-secondary"
+              <td class="align-middle"><button
+                  class="delete-expense-button btn btn-light text-secondary"
                   data-id={{id}}
-                >✕</button></td>
-              <td>{{expense_date}}</td>
-              <td>{{expense_name}}</td>
-              <td>{{expense_description}}</td>
-              <td>$
+                >✖</button></td>
+              <td class="align-middle">{{expense_date}}</td>
+              <td class="align-middle">{{expense_name}}</td>
+              <td class="align-middle">{{expense_description}}</td>
+              <td class="align-middle">$
                 <span
                   class="expense-amount"
                   data-expense="{{expense-amount}}"
@@ -67,21 +72,22 @@
       </div> }}
       <div class="container">
         <div id="total-sum" class="row d-flex justify-content-end">
-          <div class="col-3">
-            <div>Total Expenses</div>
-            <div id="calculatedExpenses"></div>
+          <div class="col-4 text-right">
+            <h5>Total Expenses:</h5>
+            <hr />
+            <h5 id="calculatedExpenses" class="text-weight-bold"></h5>
           </div>
         </div>
       </div>
     </div>
     <div class="col-3">
       <button
-        class="btn btn-warning custom-text-color mx-2"
+        class="btn btn-success custom-text-color mx-2"
         id="new-expense-button"
         type="click"
       >+ expense</button>
       <button
-        class="btn btn-warning custom-text-color"
+        class="btn btn-success custom-text-color"
         id="confirm-expense-button"
         type="click"
       >&#x2713</button>
@@ -89,7 +95,8 @@
   </div>
   <div class="row">
     <div class="col text-right mt-4">
-      <button class="btn btn-info">go to dashboard</button>
+      <button onclick="window.location.href='/dash';" class="btn btn-success">
+        < back to dashboard</button>
     </div>
   </div>
 </div>

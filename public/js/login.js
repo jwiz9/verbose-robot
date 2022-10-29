@@ -16,6 +16,8 @@ const loginFormHandler = async (event) => {
       alert(response.statusText);
     }
   }
+  const signinWarning = document.getElementById("signinWarning");
+  signinWarning.style.display = "block";
 };
 
 const signupFormHandler = async (event) => {
@@ -37,6 +39,9 @@ const signupFormHandler = async (event) => {
     } else {
       alert(response.statusText);
     }
+  } else {
+    const accountWarning = document.getElementById("newAccountWarning");
+    accountWarning.style.display = "block";
   }
 };
 

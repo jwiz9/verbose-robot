@@ -1,11 +1,16 @@
 <div class="row">
   <div class="col-auto">
-    <h2>Welcome, {{name}}!</h2>
-                    <h5>This is where you will see all the budgets you have created. Click on a budget to view it's details.</h5>
-                <button onclick="window.location.href='/build';" id="budgetBtn" class="btn btn-warning">create budget</button>
-            </div>
-        </div>
-        {{!-- {{#if budgets.length}}
+    <h2>Welcome, {{budget.user.name}}!</h2>
+    <h5>This is where you will see all the budgets you have created. Click on a
+      budget to view it's details.</h5>
+    <button
+      onclick="window.location.href='/build';"
+      id="budgetBtn"
+      class="btn btn-success"
+    >create budget</button>
+  </div>
+</div>
+{{!-- {{#if budgets.length}}
             {{#each budgets as |budget|}}
             <section class="card" style="width: 18rem;">
                 <div class="card-body"></div>
@@ -19,16 +24,21 @@
 </div>
 {{/if}} --}}
 {{#if budgets.length}}
-  <div class="container budget-list ">
+  <div class="container budget-list">
     <h3>Current Budgets:</h3>
 
     {{#each budgets as |budget|}}
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h4><a href="/budget/{{budget.id}}">{{budget.name}}<br>${{budget_limit}}</a></h4>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h4><a href="/budget/{{budget.id}}">{{budget.name}}<br
+              />${{budget_limit}}</a></h4>
+        </div>
+        <a
+          href="#"
+          class="btn btn-sm btn-danger"
+          data-id="{{budget.id}}"
+        >DELETE</a>
       </div>
-        <a href="#" class="btn btn-sm btn-danger" data-id="{{budget.id}}">DELETE</a>
-    </div>
     {{/each}}
   </div>
 {{/if}}
