@@ -10,6 +10,7 @@ let totalBudget = document
 console.log(totalBudget);
 
 let newExpenseRow = document.createElement("tr");
+let btnPlaceholder = document.createElement("td");
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
 td1Input.classList.add("expense_date");
@@ -62,7 +63,13 @@ const newExpenseHandler = (event) => {
   expensetd2.append(td2Input);
   expensetd3.append(td3Input);
   expensetd4.append(td4Input);
-  newExpenseRow.append(expensetd1, expensetd2, expensetd3, expensetd4);
+  newExpenseRow.append(
+    btnPlaceholder,
+    expensetd1,
+    expensetd2,
+    expensetd3,
+    expensetd4
+  );
 
   let newExpense = document.getElementById("new-expense");
   confirmExpenseBtn.style.visibility = "visible";

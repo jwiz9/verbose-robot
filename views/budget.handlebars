@@ -1,6 +1,6 @@
-<div class="container text-center">
+<div class="container">
   <div class="card mt-5 p-4">
-    <h2 class="my-3">{{budget.name}}</h2>
+    <h2 class="my-3 col text-uppercase">{{budget.name}}</h2>
     {{! <button type="submit" id="delete-button" class="btn btn-danger">Remove
       Budget</button> }}
 
@@ -8,15 +8,23 @@
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
         <div
-          class="budget-summary bg-light p-4 rounded"
+          class="budget-summary border p-4 rounded"
           data-budget={{budget.budget_limit}}
-        > $ {{budget.budget_limit}}</div>
+        >
+          <h5 class="font-weight-bold">budget limit:</h5>
+          <h5 class="text-right"> ${{budget.budget_limit}}</h5></div>
       </div>
       <div class="col-md-3 m-2">
-        <div class="bg-primary p-4 rounded expense-summary"></div>
+        <div class="border p-4 rounded">
+          <h5 class="font-weight-bold"> total expenses: </h5>
+          <h5 class="expense-summary text-right"></h5>
+        </div>
       </div>
       <div class="col-md-3 m-2">
-        <div class="bg-warning p-4 rounded remaining-summary">Total Remaining</div>
+        <div class="border p-4 rounded">
+          <h5 class="font-weight-bold">total remaining:</h5>
+          <h5 class="remaining-summary text-right"></h5>
+        </div>
       </div>
     </div>
     <div class="table-responsive-sm">
@@ -34,9 +42,9 @@
           {{#each budget.expenses as |expense|}}
             <tr>
               <td><button
-                  class="delete-expense-button btn btn-danger"
+                  class="delete-expense-button btn btn-secondary"
                   data-id={{id}}
-                >x</button></td>
+                >✕</button></td>
               <td>{{expense_date}}</td>
               <td>{{expense_name}}</td>
               <td>{{expense_description}}</td>
@@ -68,15 +76,20 @@
     </div>
     <div class="col-3">
       <button
-        class="btn btn-warning custom-text-color"
+        class="btn btn-warning custom-text-color mx-2"
         id="new-expense-button"
         type="click"
-      >+ add expense</button>
+      >+ expense</button>
       <button
         class="btn btn-warning custom-text-color"
         id="confirm-expense-button"
         type="click"
       >&#x2713</button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col text-right mt-4">
+      <button class="btn btn-info">go to dashboard</button>
     </div>
   </div>
 </div>
