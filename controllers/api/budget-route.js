@@ -23,7 +23,6 @@ router.delete("/:id", withAuth, async (req, res) => {
         user_id: req.session.user_id,
       },
     });
-    console.log("========== BUDGET DATA:" + budgetData);
     if (!budgetData) {
       res.status(404).json({ message: "No budget found with this id!" });
       return;

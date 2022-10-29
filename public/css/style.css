@@ -6,17 +6,22 @@ padding: .75rem;
 
 .custom-navbar {
     color: #FDF68B;
-    font-size: 1.5rem;
+    font-size: 1.25rem;
+}
+
+.custom-button-font {
+    font-size: 1rem;
+}
+
+.nav-link a:link, a:visited {
+    color: #FDF68B;
+}
+.nav-link a:hover {
+    color: #CFE87F;
 }
 
 a {
-    text-decoration: none;
-}
-a:link, a:visited {
-    color: #FDF68B;
-}
-a:hover {
-    color: #CFE87F;
+    color:#053F5C;
 }
 #logo {
     position: relative;
@@ -55,10 +60,10 @@ a:hover {
 .custom-blockColor {
     background-color: #FFEFCE;
 }
-.custom-secondaryButton {
+/* .custom-secondaryButton {
     background-color: #053F5C ;
     color:#FDF68B
-}
+} */
 
 input {
     border: 2px solid lightgray;
