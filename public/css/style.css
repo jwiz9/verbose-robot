@@ -3,6 +3,11 @@ background-color: #053F5C;
 color: #F7AD19;
 padding: .75rem;
 }
+
+#logo {
+    position: relative;
+}
+
 .custom-text-color {
     color: #053F5C;
 } 
@@ -12,6 +17,9 @@ padding: .75rem;
 
 }
 
+.budget-list {
+    margin-left: 80rem;
+}
 
 .form-control{
     width: fit-content;

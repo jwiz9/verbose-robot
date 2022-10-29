@@ -1,24 +1,29 @@
 <div class="container text-center">
   <div class="card mt-5 p-4">
     <h2 class="my-3">{{budget.name}}</h2>
-    <button type="submit" id="delete-button" class="btn btn-danger">Remove Budget</button>
+    {{! <button type="submit" id="delete-button" class="btn btn-danger">Remove
+      Budget</button> }}
 
-    <p id="budget-id" data-id={{budget.id}}>{{budget.id}}</p>
+    <p id="budget-id" data-id={{budget.id}}></p>
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
-        <div class="bg-light p-4 rounded">{{budget.budget_limit}}</div>
+        <div
+          class="budget-summary bg-light p-4 rounded"
+          data-budget={{budget.budget_limit}}
+        > $ {{budget.budget_limit}}</div>
       </div>
       <div class="col-md-3 m-2">
-        <div class="bg-primary p-4 rounded">Total Spent</div>
+        <div class="bg-primary p-4 rounded expense-summary"></div>
       </div>
       <div class="col-md-3 m-2">
-        <div class="bg-warning p-4 rounded">Total Remaining</div>
+        <div class="bg-warning p-4 rounded remaining-summary">Total Remaining</div>
       </div>
     </div>
     <div class="table-responsive-sm">
       <table class="table">
         <thead>
           <tr>
+            <th scope="col"></th>
             <th scope="col">Date</th>
             <th scope="col">Expense</th>
             <th scope="col">Description</th>
@@ -28,13 +33,18 @@
         <tbody id="new-expense">
           {{#each budget.expenses as |expense|}}
             <tr>
+              <td><button
+                  class="delete-expense-button btn btn-danger"
+                  data-id={{id}}
+                >x</button></td>
               <td>{{expense_date}}</td>
               <td>{{expense_name}}</td>
               <td>{{expense_description}}</td>
-              <td
-                class="expense-amount"
-                data-expense="{{expense-amount}}"
-              >{{expense_amount}}</td>
+              <td>$
+                <span
+                  class="expense-amount"
+                  data-expense="{{expense-amount}}"
+                >{{expense_amount}}</span></td>
             </tr>
           {{/each}}
 

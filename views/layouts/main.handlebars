@@ -1,6 +1,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <link rel="shortcut icon" type="image/x-icon" href="/images/budgie.png" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
@@ -10,13 +11,18 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="/css/style.css" />
-    <title>Document</title>
+    <title>budget</title>
   </head>
   <body>
     <header>
       <div class="row">
         <div class="col">
-          <img src="/images/budgie.png" class="rounded float-left" alt="Budgie the bird">
+          <img
+            src="/images/budgie.png"
+            class="rounded float-left"
+            id="logo"
+            alt="Budgie the bird"
+          />
           <h1>budget</h1>
         </div>
         <div class="col d-flex justify-content-end align-items-center">
@@ -44,7 +50,7 @@
                 {{#if logged_in}}
                   <li class="nav-item">
                     <a class="nav-link"><button
-                        class="no-button"
+                        class="btn btn-info"
                         id="logout"
                       >logout</button></a>
                   </li>

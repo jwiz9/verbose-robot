@@ -4,6 +4,11 @@ confirmExpenseBtn.style.visibility = "hidden";
 let budget_id = document.getElementById("budget-id").getAttribute("data-id");
 console.log(budget_id);
 
+let totalBudget = document
+  .querySelector(".budget-summary")
+  .getAttribute("data-budget");
+console.log(totalBudget);
+
 let newExpenseRow = document.createElement("tr");
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
@@ -38,9 +43,18 @@ console.log(sum);
 const calulatedExpenses = (document.getElementById(
   "calculatedExpenses"
 ).innerHTML = sum.toFixed(2));
-totalArray.forEach((element) => (sum += element));
 
-// Event handler to add new expense - let input's for new expenses appear
+let expensesSummary = (document.querySelector(
+  ".expense-summary"
+).innerHTML = `$ ${sum.toFixed(2)}`);
+
+let remainingAmount = totalBudget - sum;
+console.log(remainingAmount);
+let remainingSummary = (document.querySelector(
+  ".remaining-summary"
+).innerHTML = `$ ${remainingAmount.toFixed(2)}`);
+
+// PROMPT TO ADD NEW EXPENSE
 const newExpenseHandler = (event) => {
   console.log("hello");
 
@@ -56,6 +70,7 @@ const newExpenseHandler = (event) => {
   newExpense.append(newExpenseRow);
 };
 
+// CONFIRM ADDITION OF NEW EXPENSE
 const confirmExpenseHandler = async (event) => {
   console.log("confirm button working");
   event.preventDefault();
@@ -66,9 +81,6 @@ const confirmExpenseHandler = async (event) => {
     .querySelector(".expense_description")
     .value.trim();
   let expense_amount = document.querySelector(".expense_amount").value.trim();
-  // let budget_id = document.getElementById("budget-id").getAttribute("data-id");
-
-  // let budget_id = 1;
 
   console.log(
     "is this working======????=====" +
@@ -103,16 +115,34 @@ const confirmExpenseHandler = async (event) => {
   }
 };
 
-const delButtonHandler = async (event) => {
-  const response = await fetch(`/dash/api/budget/${budget_id}`, {
-    method: "DELETE",
-  });
-  console.log("=======delete response received======");
-  console.log(response);
-  if (response.ok) {
-    document.location.replace("/dash");
-  } else {
-    alert(response.statusText);
+// const delButtonHandler = async (event) => {
+//   const response = await fetch(`/dash/api/budget/${budget_id}`, {
+//     method: "DELETE",
+//   });
+//   console.log("=======delete response received======");
+//   console.log(response);
+//   if (response.ok) {
+//     document.location.replace("/dash");
+//   } else {
+//     alert(response.statusText);
+//   }
+// };
+
+// COMMENT DELETE FUNCTION
+const delExpenseHandler = async (event) => {
+  console.log("functioning expense delete button");
+  if (event.target.hasAttribute("data-id")) {
+    const id = event.target.getAttribute("data-id");
+
+    const response = await fetch(`/api/expense/${id}`, {
+      method: "DELETE",
+    });
+
+    if (response.ok) {
+      document.location.replace(`/dash/budget/${budget_id}`);
+    } else {
+      alert("Failed to delete expense");
+    }
   }
 };
 
@@ -124,6 +154,12 @@ document
   .getElementById("confirm-expense-button")
   .addEventListener("click", confirmExpenseHandler);
 
-document
-  .getElementById("delete-button")
-  .addEventListener("click", delButtonHandler);
+// document
+//   .getElementById("delete-button")
+//   .addEventListener("click", delButtonHandler);
+
+let deleteBtns = document.getElementsByClassName("delete-expense-button");
+for (let i = 0; i < deleteBtns.length; i++) {
+  deleteBtns[i].addEventListener("click", delExpenseHandler);
+}
+// .addEventListener("click", delExpenseHandler);
