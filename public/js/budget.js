@@ -14,15 +14,23 @@ let btnPlaceholder = document.createElement("td");
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
 td1Input.classList.add("expense_date");
+td1Input.setAttribute("placeholder", "YYYY-MM-DD");
 let expensetd2 = document.createElement("td");
 let td2Input = document.createElement("input");
 td2Input.classList.add("expense_name");
+td2Input.setAttribute("placeholder", "expense name");
+
 let expensetd3 = document.createElement("td");
 let td3Input = document.createElement("input");
 td3Input.classList.add("expense_description");
+td3Input.setAttribute("placeholder", "description (optional)");
+
 let expensetd4 = document.createElement("td");
+expensetd4.innerHTML = "$ ";
 let td4Input = document.createElement("input");
 td4Input.classList.add("expense_amount");
+td4Input.setAttribute("placeholder", "enter an amount");
+
 let sumTotal = 0;
 let totalArray = [];
 let sum = 0;
