@@ -1,16 +1,33 @@
 header {
 background-color: #053F5C;
-color: #F7AD19;
+color: #FDF68B;
 padding: .75rem;
 }
 
+.custom-navbar {
+    color: #FDF68B;
+    font-size: 1.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+a:link, a:visited {
+    color: #FDF68B;
+}
+a:hover {
+    color: #CFE87F;
+}
 #logo {
     position: relative;
 }
 
 .custom-primaryButton {
-    background-color: #F7AD19;
+    background-color: #FDF68B;
     color: #053F5C;
+    border: 2px solid #053F5C;
+    font-weight: bold;
+    letter-spacing: 2px;;
 } 
 
 .build-form{
@@ -40,5 +57,9 @@ padding: .75rem;
 }
 .custom-secondaryButton {
     background-color: #053F5C ;
-    color:#F7AD19
+    color:#FDF68B
+}
+
+input {
+    border: 2px solid lightgray;
 }
