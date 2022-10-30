@@ -1,8 +1,9 @@
-// Import Models
+// Import All Models
 const User = require('./User');
 const Budget = require('./Budget');
 const Expense = require('./Expense');
 
+// Establish Model relationships
 User.hasMany(Budget, {
     foreignKey: 'user_id',
     onDelete: 'CASCADE',

@@ -3,12 +3,12 @@ const { Budget } = require('../models');
 const budgetSeeds = [
     {
         name:'Test Budget 1', 
-        budget_limit:1000, 
+        budget_limit:1000.40, 
         user_id: 1
     },
     {
         name:'Test Budget 1', 
-        budget_limit:2000, 
+        budget_limit:2000.20, 
         user_id: 2
     },
     {

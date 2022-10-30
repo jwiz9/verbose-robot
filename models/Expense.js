@@ -1,7 +1,9 @@
+// Import Model and DataTypes from Sequelize Library
 const { Model, DataTypes } = require("sequelize");
-// const { DataTypes } = require("sequelize/types");
+// Import sequelize connection details
 const sequelize = require("../config/connection");
 
+// Initiate creation of Expense Model wtih specified columns
 class Expense extends Model {}
 
 Expense.init(
@@ -31,8 +33,11 @@ Expense.init(
       },
     },
     expense_amount: {
-      type: DataTypes.DECIMAL,
+      type: DataTypes.DECIMAL(10, 2),
       allowNull: false,
+      validate: {
+        isDecimal: true,
+      },
     },
     budget_id: {
       type: DataTypes.INTEGER,

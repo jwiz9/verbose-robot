@@ -1,9 +1,6 @@
 <div class="container">
   <div class="card mt-5 p-4">
     <h2 class="my-3 col text-uppercase">{{budget.name}}</h2>
-    {{! <button type="submit" id="delete-button" class="btn btn-danger">Remove
-      Budget</button> }}
-
     <p id="budget-id" data-id={{budget.id}}></p>
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
@@ -60,16 +57,8 @@
                 >{{expense_amount}}</span></td>
             </tr>
           {{/each}}
-
         </tbody>
       </table>
-      {{! <div class="container">
-        <div class="row d-flex justify-content-end">
-          <div id="new-expense" class="col-3 d-flex">
-
-          </div>
-        </div>
-      </div> }}
       <div class="container">
         <div id="total-sum" class="row d-flex justify-content-end">
           <div class="col-4 text-right">
@@ -80,7 +69,7 @@
         </div>
       </div>
     </div>
-    <div class="col-3">
+    <div class="col-5">
       <button
         class="btn btn-success custom-text-color mx-2"
         id="new-expense-button"

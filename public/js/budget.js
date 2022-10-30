@@ -1,20 +1,22 @@
+// Establish All Global Variables
 let confirmExpenseBtn = document.getElementById("confirm-expense-button");
 confirmExpenseBtn.style.visibility = "hidden";
 
 let budget_id = document.getElementById("budget-id").getAttribute("data-id");
-console.log(budget_id);
 
 let totalBudget = document
   .querySelector(".budget-summary")
   .getAttribute("data-budget");
-console.log(totalBudget);
 
+// Create New Expense Input Table Row with inputs to eneter new expenses
 let newExpenseRow = document.createElement("tr");
 let btnPlaceholder = document.createElement("td");
+
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
 td1Input.classList.add("expense_date");
 td1Input.setAttribute("placeholder", "YYYY-MM-DD");
+
 let expensetd2 = document.createElement("td");
 let td2Input = document.createElement("input");
 td2Input.classList.add("expense_name");
@@ -31,42 +33,61 @@ let td4Input = document.createElement("input");
 td4Input.classList.add("expense_amount");
 td4Input.setAttribute("placeholder", "enter an amount");
 
-let sumTotal = 0;
+// Create Input Warning Row - mark visibility as hidden
+let warningRow = document.createElement("tr");
+warningRow.classList.add("font-italic", "text-danger");
+let warningBtnPlaceholder = document.createElement("td");
+
+let td1Warning = document.createElement("td");
+td1Warning.innerHTML = "missing date";
+td1Warning.style.visibility = "hidden";
+
+let td2Warning = document.createElement("td");
+td2Warning.innerHTML = "enter an expense";
+td2Warning.style.visibility = "hidden";
+
+let td3Warning = document.createElement("td");
+// td3Warning.innerHTML = "warning!";
+
+let td4Warning = document.createElement("td");
+td4Warning.innerHTML = "enter an amount";
+td4Warning.style.visibility = "hidden";
+
+// Establish variables to complete budget stat calculations
 let totalArray = [];
 let sum = 0;
 
+// Get all exepenses in current expense table and save in array
 let allExpense = document.querySelectorAll(".expense-amount");
 
+// For each element in the all expenses array - take the string number and multiple by 1 to get number data type. Push numbers into totalArray
 allExpense.forEach((element) => {
   totalArray.push(element.innerHTML * 1);
-  console.log(typeof totalArray[0]);
 });
 
-console.log(totalArray);
-
+// Loop over all numbers in Total Array. Calculate sum of all numbers and hold in sum variable
 totalArray.forEach((element) => (sum += element));
-// for (let i = 0; i < totalArray.length; i++) {
-//   sum += totalArray[i] * i;
-// }
-console.log(sum);
+
+// Access total expenses at bottom of HTML budget table - set innerHTML to sum variable, to fixed decimal place
 const calulatedExpenses = (document.getElementById(
   "calculatedExpenses"
 ).innerHTML = sum.toFixed(2));
 
+// Access expenses summary box at top of HTML page - set innerHTML to sum variable to fixed decimal place
 let expensesSummary = (document.querySelector(
   ".expense-summary"
 ).innerHTML = `$ ${sum.toFixed(2)}`);
 
+// Calculate remaining total of budget using budget total - sum.
 let remainingAmount = totalBudget - sum;
-console.log(remainingAmount);
+// Access remaining total box at the top of HTML page - set innerHTML to remaning amount to fixed decimal place
 let remainingSummary = (document.querySelector(
   ".remaining-summary"
 ).innerHTML = `$ ${remainingAmount.toFixed(2)}`);
 
-// PROMPT TO ADD NEW EXPENSE
+// Event Handler to add new expense
 const newExpenseHandler = (event) => {
-  console.log("hello");
-
+  // Append components of new expense request row
   expensetd1.append(td1Input);
   expensetd2.append(td2Input);
   expensetd3.append(td3Input);
@@ -78,35 +99,42 @@ const newExpenseHandler = (event) => {
     expensetd3,
     expensetd4
   );
+  warningRow.append(
+    warningBtnPlaceholder,
+    td1Warning,
+    td2Warning,
+    td3Warning,
+    td4Warning
+  );
 
+  // Access confirm expense button - set visibility to visible
   let newExpense = document.getElementById("new-expense");
   confirmExpenseBtn.style.visibility = "visible";
 
-  newExpense.append(newExpenseRow);
+  // Append newly created expense to table of expenses
+  newExpense.append(newExpenseRow, warningRow);
 };
 
-// CONFIRM ADDITION OF NEW EXPENSE
+// Event Handler to confirm addition of new expense
 const confirmExpenseHandler = async (event) => {
-  console.log("confirm button working");
   event.preventDefault();
 
+  // Get values of all expense detail entries - and trim to remove unused spaces
   let expense_date = document.querySelector(".expense_date").value.trim();
   let expense_name = document.querySelector(".expense_name").value.trim();
   let expense_description = document
     .querySelector(".expense_description")
     .value.trim();
   let expense_amount = document.querySelector(".expense_amount").value.trim();
-
-  console.log(
-    "is this working======????=====" +
-      expense_date +
-      expense_name +
-      expense_description +
-      expense_amount +
-      budget_id
-  );
-
-  if (expense_date && expense_name && expense_amount && budget_id) {
+  // If required fields are missing - hidden input warning will be visible.
+  // If all required elements are inlcuded - send fetch request to complete POST
+  if (!expense_date) {
+    td1Warning.style.visibility = "visible";
+  } else if (!expense_name) {
+    td2Warning.style.visibility = "visible";
+  } else if (!expense_amount) {
+    td4Warning.style.visibility = "visible";
+  } else if (expense_date && expense_name && expense_amount && budget_id) {
     const response = await fetch(`/api/expense`, {
       method: "POST",
       body: JSON.stringify({
@@ -120,39 +148,24 @@ const confirmExpenseHandler = async (event) => {
         "Content-Type": "application/json",
       },
     });
-    console.log("======\n we got your expense request \n =============");
     console.log(response);
-
+    // If response is OK - redirect to updated budget page showing new expense
     if (response.ok) {
-      console.log("======\n new expense created \n =============");
       document.location.replace(`/dash/budget/${budget_id}`);
     }
   }
 };
 
-// const delButtonHandler = async (event) => {
-//   const response = await fetch(`/dash/api/budget/${budget_id}`, {
-//     method: "DELETE",
-//   });
-//   console.log("=======delete response received======");
-//   console.log(response);
-//   if (response.ok) {
-//     document.location.replace("/dash");
-//   } else {
-//     alert(response.statusText);
-//   }
-// };
-
-// COMMENT DELETE FUNCTION
+// Event handler to delete an expense
 const delExpenseHandler = async (event) => {
-  console.log("functioning expense delete button");
+  // Event target must have data-id that matches the expense ID - to fetch DELETE request of specified expense with the matching id
   if (event.target.hasAttribute("data-id")) {
     const id = event.target.getAttribute("data-id");
 
     const response = await fetch(`/api/expense/${id}`, {
       method: "DELETE",
     });
-
+    // If response if OK - redirect to updated budget page with expense removed
     if (response.ok) {
       document.location.replace(`/dash/budget/${budget_id}`);
     } else {
@@ -161,22 +174,18 @@ const delExpenseHandler = async (event) => {
   }
 };
 
+// Call New Expense Handler
 document
   .getElementById("new-expense-button")
   .addEventListener("click", newExpenseHandler);
 
+// Call Confirm Expense Handler
 document
   .getElementById("confirm-expense-button")
   .addEventListener("click", confirmExpenseHandler);
 
-// document
-//   .getElementById("delete-button")
-//   .addEventListener("click", delButtonHandler);
-
+// Loop through all delete buttons within the expense chart and add an event handler - when clicked call delete Expense Function
 let deleteBtns = document.getElementsByClassName("delete-expense-button");
 for (let i = 0; i < deleteBtns.length; i++) {
   deleteBtns[i].addEventListener("click", delExpenseHandler);
 }
-// .addEventListener("click", delExpenseHandler);
-
-

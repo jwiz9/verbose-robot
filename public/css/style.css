@@ -4,6 +4,15 @@ color: #FDF68B;
 padding: .75rem;
 }
 
+.custom-title {
+    font-family:'Chango', cursive;
+}
+main {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.custom-lead{
+    line-height: 2.5rem;
+}
 .custom-navbar {
     color: #FDF68B;
     font-size: 1.25rem;
