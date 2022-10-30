@@ -1,3 +1,4 @@
+// Event handler to manage user login
 const loginFormHandler = async (event) => {
   event.preventDefault();
   const email = document.querySelector("#email-login").value.trim();
@@ -20,6 +21,7 @@ const loginFormHandler = async (event) => {
   signinWarning.style.display = "block";
 };
 
+// Event handler to manage new user account creation
 const signupFormHandler = async (event) => {
   event.preventDefault();
 
@@ -45,10 +47,12 @@ const signupFormHandler = async (event) => {
   }
 };
 
+// Call Login Form Handler on existing user login
 document
   .querySelector(".login-form")
   .addEventListener("submit", loginFormHandler);
 
+//Call Sign Up Form Handler on new user signup
 document
   .querySelector(".signup-form")
   .addEventListener("submit", signupFormHandler);

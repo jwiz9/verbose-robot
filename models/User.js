@@ -1,7 +1,12 @@
+// Import Model and DataTypes from Sequelize Library
 const {Model, DataTypes} = require('sequelize');
+// Import bcrypt for password hash
 const bcrypt = require('bcrypt');
+// Import sequelize connection details
 const sequelize = require('../config/connection');
 
+// Initiate creation of Budget Model wtih specified columns
+// Establish Model instance to checkpassword upon user login
 class User extends Model {
     checkPassword(loginPw) {
         return bcrypt.compareSync(loginPw, this.password);
@@ -18,9 +23,6 @@ User.init(
         name: {
             type: DataTypes.STRING, 
             allowNull: false, 
-            validate: {
-                isAlpha: true
-            }, 
         },
         email: {
             type: DataTypes.STRING, 
@@ -38,6 +40,7 @@ User.init(
             },
         },
     },
+    // Hooks to assist with password validation - before user creation or user update hash user password. 
     {
         hooks: {
             beforeCreate: async (newUserData) => {

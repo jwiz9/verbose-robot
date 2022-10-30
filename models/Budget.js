@@ -1,6 +1,9 @@
+// Import Model and DataTypes from Sequelize Library
 const { Model, DataTypes} = require('sequelize');
+// Import sequelize connection details
 const sequelize = require('../config/connection');
 
+// Initiate creation of Budget Model wtih specified columns
 class Budget extends Model {}
 
 Budget.init(
@@ -14,12 +17,9 @@ Budget.init(
         name: {
             type: DataTypes.STRING, 
             allowNull: false, 
-            // validate: {
-            //     isAlphanumeric: true
-            // },
         },
         budget_limit: {
-            type: DataTypes.DECIMAL,
+            type: DataTypes.DECIMAL(10,2),
             allowNull: false, 
             validate: {
                 isDecimal: true
