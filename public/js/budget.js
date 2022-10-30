@@ -178,3 +178,17 @@ for (let i = 0; i < deleteBtns.length; i++) {
   deleteBtns[i].addEventListener("click", delExpenseHandler);
 }
 // .addEventListener("click", delExpenseHandler);
+const datepicker = require('js-datepicker')
+
+const picker = datepicker('date', {
+  // Event callbacks.
+  onSelect: instance => {
+    // Show which date was selected.
+    console.log(instance.dateSelected)
+  },
+  formatter: (input, date, instance) => {
+    // This will display the date as `1/1/2019`.
+    input.value = date.toDateString()
+  },
+})
+

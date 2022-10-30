@@ -1,8 +1,11 @@
-<div class="row">
-  <div class="col-auto">
-    <h2>Welcome, {{budget.user.name}}!</h2>
-    <h5>This is where you will see all the budgets you have created. Click on a
-      budget to view it's details.</h5>
+<div class="container text-center">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-lg-6">
+      <div class="jumbotron bg-white text-left">
+        <h2 class="display-3 mb-5">Welcome!</h2>
+        <p class="lead">This is where you will see all the budgets you have created.</p>
+        <p class="lead">Click on a budget to view it's details.</p>
+        <p class="lead">Click on the create budget button to create a new budget.</p>
     <button
       onclick="window.location.href='/build';"
       id="budgetBtn"
@@ -10,36 +13,24 @@
     >create budget</button>
   </div>
 </div>
-{{!-- {{#if budgets.length}}
-            {{#each budgets as |budget|}}
-            <section class="card" style="width: 18rem;">
-                <div class="card-body"></div>
-                <a href="/budget/{{id}}">
-                    <h5 class="card-title">{{name}}</h5>
-                    <h6 class="card-subtitle mb-2">Budget: {{budget_limit}}</h6>
-                </a>
-            </section>
-            {{/each}}
-    </section>
-</div>
-{{/if}} --}}
-{{#if budgets.length}}
-  <div class="container budget-list">
-    <h3>Current Budgets:</h3>
 
+{{#if budgets.length}}
+<div class="jumbotron bg-white text-right">
+  <div class="container budget-list">
     {{#each budgets as |budget|}}
-      <div class="card" style="width: 18rem;">
+      <div class="card bg-success" style="width: 18rem;">
         <div class="card-body">
-          <h4><a href="/budget/{{budget.id}}">{{budget.name}}<br
+                <h4><a href="dash/budget/{{budget.id}}">{{budget.name}}<br
               />${{budget_limit}}</a></h4>
         </div>
         <a
           href="#"
-          class="btn btn-sm btn-danger"
+          class="btn btn-close btn-danger"
           data-id="{{budget.id}}"
         >DELETE</a>
       </div>
     {{/each}}
   </div>
+</div>
 {{/if}}
 <script src="./js/dashboard.js"></script>
