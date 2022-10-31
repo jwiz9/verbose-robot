@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { User } = require("../../models");
-
-// CREATE A NEW USER
+var validator = require("email-validator");
+// CREATE A NEW USER with email-validator to validate form of email.
 router.post("/", async (req, res) => {
   try {
     const userData = await User.create(req.body);
+    validator.validate(req.body.email);
     console.log(req.body);
 
     req.session.save(() => {
