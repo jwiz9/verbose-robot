@@ -10,7 +10,7 @@ const logout = async () => {
     // Once logged out - redirect to home/login page
     document.location.replace('/login');
   } else {
-    alert('Failed to log out');
+    alert('Failed to logout user');
   }
 };
 // Call logout function on user logout

@@ -1,10 +1,12 @@
 const router = require("express").Router();
 const { Budget, User } = require("../models");
 
+
 // Makes home route to login page
+
 router.get("/", (req, res) => {
   console.log("arriving at home");
-  res.render("login");
+  res.render("dashboard");
 });
 
 // Use withAuth middleware to prevent access to route

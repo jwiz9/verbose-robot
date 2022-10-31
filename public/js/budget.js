@@ -12,9 +12,16 @@ let totalBudget = document
 let newExpenseRow = document.createElement("tr");
 let btnPlaceholder = document.createElement("td");
 
+// let expensetd1 = document.createElement("td");
+// let td1Input = document.createElement("input");
+// td1Input.classList.add("expense_date");
+// td1Input.setAttribute("id", "datepicker");
+// td1Input.setAttribute("type", "text");
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
 td1Input.classList.add("expense_date");
+td1Input.setAttribute("type", "text");
+// td1Input.setAttribute("id", "datepicker");
 td1Input.setAttribute("placeholder", "YYYY-MM-DD");
 
 let expensetd2 = document.createElement("td");
@@ -47,11 +54,16 @@ td2Warning.innerHTML = "enter an expense";
 td2Warning.style.visibility = "hidden";
 
 let td3Warning = document.createElement("td");
-// td3Warning.innerHTML = "warning!";
 
 let td4Warning = document.createElement("td");
 td4Warning.innerHTML = "enter an amount";
 td4Warning.style.visibility = "hidden";
+
+// Datepicker
+
+$(function () {
+  $("#datepicker").datepicker();
+});
 
 // Establish variables to complete budget stat calculations
 let totalArray = [];
@@ -71,7 +83,7 @@ totalArray.forEach((element) => (sum += element));
 // Access total expenses at bottom of HTML budget table - set innerHTML to sum variable, to fixed decimal place
 const calulatedExpenses = (document.getElementById(
   "calculatedExpenses"
-).innerHTML = sum.toFixed(2));
+).innerHTML = `$ ${sum.toFixed(2)}`);
 
 // Access expenses summary box at top of HTML page - set innerHTML to sum variable to fixed decimal place
 let expensesSummary = (document.querySelector(
@@ -189,5 +201,3 @@ let deleteBtns = document.getElementsByClassName("delete-expense-button");
 for (let i = 0; i < deleteBtns.length; i++) {
   deleteBtns[i].addEventListener("click", delExpenseHandler);
 }
-
-
