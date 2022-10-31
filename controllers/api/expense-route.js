@@ -3,16 +3,17 @@ const { Expense } = require("../../models");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
+  // Get all expenses where budget_id is 1
   Expense.findAll({
     where: {
       budget_id: 1,
     },
   })
+  // Serialize data so the template can read it then pass serialized data and session flag into template
     .then((expenseData) => {
       const expenses = expenseData.map((expense) =>
         expense.get({ plain: true })
       );
-      const logged_in = req.session.logged_in;
       console.log(expenses);
     })
     .catch((err) => {
@@ -22,6 +23,7 @@ router.get("/", (req, res) => {
 });
 
 router.post("/", withAuth, async (req, res) => {
+  // Post for creating a new expense while logged in
   try {
     const newExpense = await Expense.create({
       ...req.body,
@@ -36,6 +38,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 router.delete("/:id", withAuth, async (req, res) => {
+  // Delete expense while logged in
   try {
     const expenseData = await Expense.destroy({
       where: {
@@ -60,6 +63,7 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
+
 // router.put("/:id", withAuth, async (req, res) => {
 //   // update a category by its `id` value
 //   Expense.update(
@@ -82,5 +86,6 @@ router.delete("/:id", withAuth, async (req, res) => {
 //       res.status(500).json(err);
 //     });
 // });
+
 
 module.exports = router;
