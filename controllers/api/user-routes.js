@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { User } = require("../../models");
+const { User } = require("../../Moxdels");
 var validator = require("email-validator");
 // CREATE A NEW USER with email-validator to validate form of email.
 router.post("/", async (req, res) => {
