@@ -1,9 +1,8 @@
 const router = require("express").Router();
-const { Budget, User, Expense } = require("../models");
-const withAuth = require("../utils/auth");
+const { Budget, User, Expense } = require("../../models");
+const withAuth = require("../../utils/auth");
 
 router.get("/", withAuth, (req, res) => {
-  // Find all budgets and join with user and expense data
   Budget.findAll({
     where: {
       user_id: req.session.user_id,
@@ -18,11 +17,11 @@ router.get("/", withAuth, (req, res) => {
     ],
   })
     .then((budgetData) => {
-      // Serialize data before passing to template
+      // serialize data before passing to template
       const budgets = budgetData.map((budget) => budget.get({ plain: true }));
       console.log(budgets);
 
-      res.render("dashboard", { budgets, logged_in: req.session.logged_in });
+      res.render("buildbudget", { budgets, logged_in: req.session.logged_in });
     })
     .catch((err) => {
       console.log(err);
@@ -31,7 +30,6 @@ router.get("/", withAuth, (req, res) => {
 });
 
 router.get("/budget/:id", async (req, res) => {
-  // Get budget by id and join with user and expense data
   try {
     const budgetData = await Budget.findByPk(req.params.id, {
       include: [
@@ -46,7 +44,7 @@ router.get("/budget/:id", async (req, res) => {
 
     const budget = budgetData.get({ plain: true });
     console.log("============this is budget data" + JSON.stringify(budget));
-    res.render("budget", {
+    res.render("buildbudget", {
       budget,
       logged_in: req.session.logged_in,
     });

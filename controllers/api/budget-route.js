@@ -4,6 +4,7 @@ const withAuth = require("../../utils/auth");
 
 router.post("/", withAuth, async (req, res) => {
   try {
+    // Get all projects and JOIN with user data
     const newBudget = await Budget.create({
       ...req.body,
       user_id: req.session.user_id,
@@ -16,6 +17,7 @@ router.post("/", withAuth, async (req, res) => {
 });
 
 router.delete("/:id", withAuth, async (req, res) => {
+  // Delete budget while logged in
   try {
     const budgetData = await Budget.destroy({
       where: {
