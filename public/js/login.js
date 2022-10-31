@@ -4,7 +4,10 @@ const loginFormHandler = async (event) => {
   const email = document.querySelector("#email-login").value.trim();
   const password = document.querySelector("#password-login").value.trim();
 
-  if (email && password) {
+  if (!email || !password) {
+    const signinWarning = document.getElementById("signinWarning");
+    signinWarning.style.display = "block";
+  } else if (email && password) {
     const response = await fetch("/api/users/login", {
       method: "POST",
       body: JSON.stringify({ email, password }),
@@ -14,11 +17,9 @@ const loginFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dash");
     } else {
-      alert(response.statusText);
+      signinWarning.style.display = "block";
     }
   }
-  const signinWarning = document.getElementById("signinWarning");
-  signinWarning.style.display = "block";
 };
 
 // Event handler to manage new user account creation
@@ -39,10 +40,11 @@ const signupFormHandler = async (event) => {
     if (response.ok) {
       document.location.replace("/dash");
     } else {
-      alert(response.statusText);
+      const accountWarning = document.getElementById("newAccountWarning");
+      accountWarning.style.display = "block";
     }
   } else {
-    const accountWarning = document.getElementById("newAccountWarning");
+    accountWarning = document.getElementById("newAccountWarning");
     accountWarning.style.display = "block";
   }
 };

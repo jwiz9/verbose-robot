@@ -2,58 +2,11 @@ const router = require("express").Router();
 const { Budget, User } = require("../models");
 const withAuth = require("../utils/auth");
 
-// 
+//
 router.get("/", (req, res) => {
   console.log("arriving at home");
-  res.render("login");
+  res.render("dashboard");
 });
-
-// router.get('/', async (req, res) => {
-//   try {
-//     // Get all budgets and JOIN with user data
-//     const budgetData = await Budget.findAll({
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
-
-//     // Serialize data so the template can read it
-//     const budgets = budgetData.map((project) => project.get({ plain: true }));
-
-//     // Pass serialized data and session flag into template
-//     res.render('homepage', {
-//       budgets,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
-
-// router.get('/budget/:id', async (req, res) => {
-//   try {
-//     const budgetData = await Project.findByPk(req.params.id, {
-//       include: [
-//         {
-//           model: User,
-//           attributes: ['name'],
-//         },
-//       ],
-//     });
-
-//     const budget = budgetData.get({ plain: true });
-
-//     res.render('budget', {
-//       ...budget,
-//       logged_in: req.session.logged_in
-//     });
-//   } catch (err) {
-//     res.status(500).json(err);
-//   }
-// });
 
 // Use withAuth middleware to prevent access to route
 router.get("/", async (req, res) => {

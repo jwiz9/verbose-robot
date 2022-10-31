@@ -2,6 +2,7 @@ const router = require("express").Router();
 const { Budget } = require("../../models");
 const withAuth = require("../../utils/auth");
 
+
 router.post("/", withAuth, async (req, res) => {
   try {
     const newBudget = await Budget.create({
