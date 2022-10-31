@@ -1,4 +1,14 @@
-<div class="container">
+<div class="container text-center">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-lg-6">
+      <div class="jumbotron bg-white text-left">
+        <h2 class="display-3 mb-5">Build your budget</h2>
+        <p class="lead">Start by giving us the name of the budget and the budget limit you would like to set</p>
+        <br>
+  </div>
+</div>
+
+{{!-- <div class="container text-center">
   <div class="row justify-content-between align-items-center">
     <div class="col-lg-6">
       <div class="jumbotron bg-white text-left">
@@ -6,21 +16,25 @@
         <p class="lead">Start by giving us the name of the budget and the budget limit you would like to set</p>
       </div>
     </div>
-  </div>
+  </div> --}}
 
-    <div class="col-md-6">
+    <div class="col-md-6 jumbotron bg-white text-middle">
         <div class="row">
             <div class="build-form"><form class="build-form">
                 <div class="form-group">
                     <label for="usr">Name:</label>
-                    <input  class="form-control" id="name">
+                    <input  class="form-control" id="name" onclick="return IsEmpty()";>
                 </div>
+                <p id="nameL" style ="display: none" class="war">you must enter the budget name</p>
                 <div class="form-group">
                         <label >Budget Limit:</label>
                         <input class="form-control" id="budget_limit">
-                        <br>
+                        <br> 
+                        <p id="budgetL" style ="display: none" class="war"> you must add a budget limit</p>
+                        
                     <button type="submit" class="btn btn-success">Next</button> 
                 </div></form>
+               
             </div>
         </div>
     </div>
