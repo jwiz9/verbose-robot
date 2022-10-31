@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Expense } = require("../../models");
+const { Expense } = require("../../Moxdels");
 const withAuth = require("../../utils/auth");
 
 router.get("/", (req, res) => {
