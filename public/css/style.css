@@ -1,51 +1,50 @@
+/* Universal Styles */
 header {
 background-color: #053F5C;
 color: #FDF68B;
 padding: .75rem;
 }
 
-.custom-title {
-    font-family:'Chango', cursive;
-}
+
 main {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/* Customization for Bootstrap elements*/
+
+.custom-title {
+    font-family:'Chango', cursive;
 }
 .custom-lead{
     line-height: 2.5rem;
 }
-.custom-navbar {
-    color: #FDF68B;
-    font-size: 1.25rem;
+.custom-link  {
+    color: #8199A7;
+}
+.custom-link:hover {
+    color:lightgray;
+    text-decoration:  none;
 }
 
 .custom-button-font {
     font-size: 1rem;
 }
 
-.nav-link a:link, a:visited {
-    color: #FDF68B;
-}
-.nav-link a:hover {
-    color: #CFE87F;
+.custom-blockColor {
+    background-color: #FFEFCE;
 }
 
-a {
-    color:#053F5C;
-}
+/* Navbar Styles */
+a:link, a:visited {
+    color: #053F5C;
+} 
+
 #logo {
     position: relative;
 }
 
-.custom-primaryButton {
-    background-color: #FDF68B;
-    color: #053F5C;
-    border: 2px solid #053F5C;
-    font-weight: bold;
-    letter-spacing: 2px;;
-} 
-
+/* Element Stlyes */
 .form-control{
-    width: fit-content;
+    width:100%;
 }
 
 .btn{
@@ -54,18 +53,6 @@ a {
 
 .build-text{
     flex-direction: column;
-}
-
-.custom-blockColor {
-    background-color: #FFEFCE;
-}
-/* .custom-secondaryButton {
-    background-color: #053F5C ;
-    color:#FDF68B
-} */
-
-input {
-    border: 2px solid lightgray;
 }
 
 .card {
@@ -88,8 +75,4 @@ input {
     right: -5px;
     top: 20px;
     opacity: 0.1;
-}
-
-.war{
-    color: red;
 }
