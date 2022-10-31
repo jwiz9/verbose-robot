@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Budget, User } = require("../Moxdels");
+const { Budget, User } = require("../models");
 
 
 // Makes home route to login page
