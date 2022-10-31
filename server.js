@@ -45,7 +45,3 @@ sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () => console.log("Now listening"));
 });
 
-app.use((req, res, next) => {
-  res.status(404).send("Sorry can't find that!")
-})
-
