@@ -1,7 +1,10 @@
+{{!-- Handlebars to manage view of single budget --}}
 <div class="container">
+  {{!-- Establish card with all budget details --}}
   <div class="card mt-5 p-4">
     <h2 class="my-3 col text-uppercase">{{budget.name}}</h2>
     <p id="budget-id" data-id={{budget.id}}></p>
+    {{!-- Create cards to show budget stats - including limit, expense totall, and remaining --}}
     <div class="row justify-content-center my-5">
       <div class="col-md-3 m-2">
         <div
@@ -29,6 +32,7 @@
         </div>
       </div>
     </div>
+    {{!-- Table to hold all expenses logged to budget --}}
     <div class="table-responsive-sm">
       <table class="table">
         <thead>
@@ -40,6 +44,7 @@
             <th scope="col"><h5>Cost</h5></th>
           </tr>
         </thead>
+        {{!-- Loop through each expense logged to the budget and create a table row with the relevent details --}}
         <tbody id="new-expense">
           {{#each budget.expenses as |expense|}}
             <tr>
@@ -59,6 +64,7 @@
           {{/each}}
         </tbody>
       </table>
+      {{!-- Container holding final tally of all expenses at the bottom of the page --}}
       <div class="container">
         <div id="total-sum" class="row d-flex justify-content-end">
           <div class="col-4 text-right">
@@ -69,12 +75,14 @@
         </div>
       </div>
     </div>
+    {{!-- Button to add new expense - on click will prompt show of expense inputs --}}
     <div class="col-5">
       <button
         class="btn btn-success custom-text-color mx-2"
         id="new-expense-button"
         type="click"
       >+ expense</button>
+      {{!-- Button to confirm add of new expense - will only appear on add expense click --}}
       <button
         class="btn btn-success custom-text-color"
         id="confirm-expense-button"
@@ -82,6 +90,7 @@
       >&#x2713</button>
     </div>
   </div>
+  {{!-- Button to go back to user dashboard --}}
   <div class="row">
     <div class="col text-right mt-4">
       <button onclick="window.location.href='/dash';" class="btn btn-success">
@@ -89,5 +98,9 @@
     </div>
   </div>
 </div>
-
-<script src="/js/budget.js"></script>
+  {{!-- Jquery Script Files --}}
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+  
+  {{!-- Link to budget.js to manage page interaction--}}
+  <script src="/js/budget.js"></script>

@@ -18,7 +18,13 @@
       href="https://fonts.googleapis.com/css2?family=Chango&display=swap"
       rel="stylesheet"
     />
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script>
+    {{! JQuery UI CSS }}
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css"
+    />
+
+    {{! <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"></script> }}
     <link rel="stylesheet" href="/css/style.css" />
     <title class="custom-title">budget</title>
   </head>
@@ -26,47 +32,54 @@
     <header>
       <div class="row">
         <div class="col">
-          <div  class="container-fluid">
-          <img
-            src="/images/budgie.png"
-            class="rounded float-left"
-            id="logo"
-            alt="Budgie the bird"
-          />
+          <div class="container-fluid">
+            <img
+              src="/images/budgie.png"
+              class="rounded float-left"
+              id="logo"
+              alt="Budgie the bird"
+            />
           </div>
           <h4 class="custom-title">budget</h4>
         </div>
         <div class="col d-flex justify-content-end align-items-center">
-    <nav class="navbar navbar-expand-sm navbar-dark">
-  <div class="container-fluid">
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    
-    <div class="collapse navbar-collapse" id="mynavbar"> 
-      <ul class="navbar-nav me-auto">
-       {{#if logged_in}}
-        <li class="nav-item">
-          <a class="nav-link" href="/">home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/dash">dashboard</a>
-        </li>
-      <li class="nav-item">
-                    <a class="nav-link"><button
-                        class="btn btn-success custom-button-font"
-                        id="logout"
-                      >logout</button></a>
-                  </li>
+          <nav class="navbar navbar-expand-sm navbar-dark">
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#mynavbar"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              {{! Nav bar - if user is logged in they will see the following options }}
+              <div class="collapse navbar-collapse" id="mynavbar">
+                <ul class="navbar-nav me-auto">
+                  {{#if logged_in}}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/dash">home</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="/dash">dashboard</a>
+                    </li>
+
+                    <li class="nav-item">
+                      <a class="nav-link"><button
+                          class="btn btn-success custom-button-font"
+                          id="logout"
+                        >logout</button></a>
+                    </li>
                   {{else}}
-                  <li class="nav-item">
-                    <a class="nav-link" href="/login">login</a>
-                  </li>
-                {{/if}}
-      </ul>
-    </div>
-  </div>
-</nav>
+                    {{! If user is not logged in, the nav bar will only show login }}
+                    <li class="nav-item">
+                      <a class="nav-link" href="/login">login</a>
+                    </li>
+                  {{/if}}
+                </ul>
+              </div>
+            </div>
+          </nav>
         </div>
       </div>
     </header>
