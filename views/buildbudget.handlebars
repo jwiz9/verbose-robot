@@ -1,24 +1,29 @@
-
-
-<div class="build-form"><form class="build-form d-flex flex-column">
-  <div class="form-group">
-      <label for="usr">Name:</label>
-       <input  class="form-control" id="name">
+<div class="container">
+  <div class="row justify-content-between align-items-center">
+    <div class="col-lg-6">
+      <div class="jumbotron bg-white text-left">
+        <h2 class="display-3 mb-5">Build your budget</h2>
+        <p class="lead">Start by giving us the name of the budget and the budget limit you would like to set</p>
+      </div>
     </div>
-    <div class="form-group">
-         <label >budget limit:</label>
-        <input class="form-control" id="budget_limit">
-<button type="submit" class="btn btn-outline-warning">save</button> 
-</div></form>
+  </div>
 
-
-<div class="build-text">
-    <section class="container my-5">
-    <!-- Use row class to create row in the container -->
-    <div class="pull-left">
-        <h3>Build Your Budget</h3>
-        <p>start by giving us the name and the budget limit</p>
+    <div class="col-md-6">
+        <div class="row">
+            <div class="build-form"><form class="build-form">
+                <div class="form-group">
+                    <label for="usr">Name:</label>
+                    <input  class="form-control" id="name">
+                </div>
+                <div class="form-group">
+                        <label >Budget Limit:</label>
+                        <input class="form-control" id="budget_limit">
+                        <br>
+                    <button type="submit" class="btn btn-success">Next</button> 
+                </div></form>
+            </div>
+        </div>
     </div>
-</section>
 </div>
+
 <script src="/js/build.js"></script>
