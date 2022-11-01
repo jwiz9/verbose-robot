@@ -11,5 +11,5 @@ router.use('/', homeRoutes);
 router.use('/dash', dashRoutes);
 router.use("/api", apiRoutes);
 
-// Export router
+// Export router module
 module.exports = router;

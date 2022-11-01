@@ -1,4 +1,4 @@
-// Establish All Global Variables
+// Establish Global Variables
 let confirmExpenseBtn = document.getElementById("confirm-expense-button");
 confirmExpenseBtn.style.visibility = "hidden";
 
@@ -31,7 +31,6 @@ td3Input.classList.add("expense_description", "form-control");
 td3Input.setAttribute("placeholder", "description");
 
 let expensetd4 = document.createElement("td");
-// expensetd4.innerHTML = "$ ";
 let td4Input = document.createElement("input");
 td4Input.classList.add("expense_amount", "form-control");
 td4Input.setAttribute("placeholder", "amount");
@@ -110,7 +109,6 @@ const newExpenseHandler = (event) => {
   );
 
   // Datepicker
-
   $(function () {
     $("#datepicker").datepicker();
   });

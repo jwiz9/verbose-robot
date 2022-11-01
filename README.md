@@ -10,13 +10,46 @@ This application is distributed under the [MIT](https://opensource.org/licenses/
   - [License](#License)
   - [Usage](#Usage)
   - [Installation](#Installation)
+  - [Demo](#Demo)
   - [Tests](#Tests)
   - [Contributions](#Contributions)
   ## Usage
   To create a budget, first you must create a account which will be the opening page as you enter the application. Users can also signout and back out to the login page at anytime by using the navbar logout link. After creating an account the user will be brought to the dashboard where they will be given the option to create a new budget and be rerouted to the build budget page. After creating an budget, users will see this newly created budget in their dashboard where they can click on and be taken to the create expense page. This page will allow the user to create expenses and see the remaining amount of their budget after tallying every expense.
 
   ## Installation
-  The user simply needs to use the [heroku](https://bloodcurdling-vampire-96793.herokuapp.com/) website to access the web application and create an account. Then, they can create their budget immediately to their own criteria. If the user wants to run the application on their local machine this application requires npm package dependencies. To run this application locally on your computer, in your terminal command line, run: ```npm install```. In order to access the database you will need to establish an environment variable file ```.env``` in the root of your file system. Attached to this application will be a ```.env.SAMPLE``` folder that you can replace DB_PW='YOUR PASSWORD'. Next, you will need to source the SQL databse, in your terminal command line, run: ```my sql -uroot -p``` and enter your SQL login credntials. Once logged in, run: ```source db/schema.sql``` then ```quit```. Once you have sourced the schema.sql run: ```node seeds/index``` and ```npm start``` to be able to access ```http://localhost:3001/```.
+  The user simply needs to use the [heroku](https://bloodcurdling-vampire-96793.herokuapp.com/) website to access the web application and create an account. Then, they can create their budget immediately to their own criteria. 
+  
+  If the user wants to run the application on their local machine this application requires npm package dependencies. To run this application locally on your computer, in your terminal command line, run:
+
+  ```
+  npm install.
+  ```
+   In order to access the database you will need to establish an environment variable file ```.env``` in the root of your file system. Attached to this application will be a ```.env.SAMPLE``` folder that you can replace DB_PW='YOUR PASSWORD'. 
+   
+   Next, you will need to source the SQL databse, in your terminal command line, run: 
+   ```
+   my sql -uroot -p
+   ``` 
+   and enter your SQL login credntials. Once logged in, run: 
+   ```
+   source db/schema.sql
+   quit
+   ```
+  Once you have sourced the schema.sql run: 
+  ```
+  node seeds/index.js
+  npm start
+  ``` 
+ Once the application is launmched, you will be able to access the application at http://localhost:3001/
+
+  ## Demo
+  [View Deployed Site on Heroku](https://bloodcurdling-vampire-96793.herokuapp.com/)
+
+  References Images of Deployed Site:
+  
+  <img src="public/images/deployed site - user dashboard.png" width="200px" alt="deployed site - user dashboard">
+  <img src="public/images/deployed site - user budget.png" width="200px" alt="deployed site - single budget view">
+  <img src="public/images/deployed site - create budget.png" width="200px" alt="deployed site - create budget page">
 
   ## Tests
   N/A
@@ -26,4 +59,6 @@ This application is distributed under the [MIT](https://opensource.org/licenses/
   Amy Wilford, Salman, Jordan Heath
   
   ## Questions
-  Find us on GitHub: <https://github.com/AmyWilford> <br> <https://github.com/jwiz9> <br> <https://github.com/456salman>
+  Find us on GitHub: 
+  
+  <https://github.com/AmyWilford> <br> <https://github.com/jwiz9> <br> <https://github.com/456salman>

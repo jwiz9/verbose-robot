@@ -61,29 +61,5 @@ router.delete("/:id", withAuth, async (req, res) => {
   }
 });
 
-
-// router.put("/:id", withAuth, async (req, res) => {
-//   // update a category by its `id` value
-//   Expense.update(
-//     {
-//       expense_name: req.body.expense_name,
-//     },
-//     {
-//       where: {
-//         id: req.params.id,
-//       },
-//     }
-//   )
-//     .then((expeData) => {
-//       !expeData
-//         ? res.status(404).json({ message: "No expense found with this id" })
-//         : res.json({ Success: "Expense has been updated", Expense: expeData });
-//     })
-//     .catch((err) => {
-//       console.log(err);
-//       res.status(500).json(err);
-//     });
-// });
-
-
+// export router module
 module.exports = router;
