@@ -10,35 +10,31 @@ let totalBudget = document
 
 // Create New Expense Input Table Row with inputs to eneter new expenses
 let newExpenseRow = document.createElement("tr");
+newExpenseRow.setAttribute("scope", "row");
 let btnPlaceholder = document.createElement("td");
 
-// let expensetd1 = document.createElement("td");
-// let td1Input = document.createElement("input");
-// td1Input.classList.add("expense_date");
-// td1Input.setAttribute("id", "datepicker");
-// td1Input.setAttribute("type", "text");
 let expensetd1 = document.createElement("td");
 let td1Input = document.createElement("input");
-td1Input.classList.add("expense_date");
+td1Input.classList.add("expense_date", "form-control");
 td1Input.setAttribute("type", "text");
-// td1Input.setAttribute("id", "datepicker");
-td1Input.setAttribute("placeholder", "YYYY-MM-DD");
+td1Input.setAttribute("id", "datepicker");
+td1Input.setAttribute("placeholder", "select date");
 
 let expensetd2 = document.createElement("td");
 let td2Input = document.createElement("input");
-td2Input.classList.add("expense_name");
-td2Input.setAttribute("placeholder", "expense name");
+td2Input.classList.add("expense_name", "form-control");
+td2Input.setAttribute("placeholder", "expense");
 
 let expensetd3 = document.createElement("td");
 let td3Input = document.createElement("input");
-td3Input.classList.add("expense_description");
-td3Input.setAttribute("placeholder", "description (optional)");
+td3Input.classList.add("expense_description", "form-control");
+td3Input.setAttribute("placeholder", "description");
 
 let expensetd4 = document.createElement("td");
-expensetd4.innerHTML = "$ ";
+// expensetd4.innerHTML = "$ ";
 let td4Input = document.createElement("input");
-td4Input.classList.add("expense_amount");
-td4Input.setAttribute("placeholder", "enter an amount");
+td4Input.classList.add("expense_amount", "form-control");
+td4Input.setAttribute("placeholder", "amount");
 
 // Create Input Warning Row - mark visibility as hidden
 let warningRow = document.createElement("tr");
@@ -58,12 +54,6 @@ let td3Warning = document.createElement("td");
 let td4Warning = document.createElement("td");
 td4Warning.innerHTML = "enter an amount";
 td4Warning.style.visibility = "hidden";
-
-// Datepicker
-
-$(function () {
-  $("#datepicker").datepicker();
-});
 
 // Establish variables to complete budget stat calculations
 let totalArray = [];
@@ -119,6 +109,12 @@ const newExpenseHandler = (event) => {
     td4Warning
   );
 
+  // Datepicker
+
+  $(function () {
+    $("#datepicker").datepicker();
+  });
+
   // Access confirm expense button - set visibility to visible
   let newExpense = document.getElementById("new-expense");
   confirmExpenseBtn.style.visibility = "visible";
@@ -138,6 +134,7 @@ const confirmExpenseHandler = async (event) => {
     .querySelector(".expense_description")
     .value.trim();
   let expense_amount = document.querySelector(".expense_amount").value.trim();
+
   // If required fields are missing - hidden input warning will be visible.
   // If all required elements are inlcuded - send fetch request to complete POST
   if (!expense_date) {

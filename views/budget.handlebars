@@ -2,46 +2,46 @@
 <div class="container">
   {{!-- Establish card with all budget details --}}
   <div class="card mt-5 p-4">
-    <h2 class="my-3 col text-uppercase">{{budget.name}}</h2>
+    <h1 class="my-3 col text-lowercase display-5">{{budget.name}}</h1>
     <p id="budget-id" data-id={{budget.id}}></p>
     {{!-- Create cards to show budget stats - including limit, expense totall, and remaining --}}
     <div class="row justify-content-center my-5">
-      <div class="col-md-3 m-2">
+      <div class="col-lg-3 m-2">
         <div
-          class="budget-summary custom-blockColor p-4 rounded"
+          class="budget-summary custom-blockColor p-2 rounded"
           data-budget={{budget.budget_limit}}
         >
-          <h5>budget limit:</h5>
-          <h5 class="text-right font-weight-bold">
-            ${{budget.budget_limit}}</h5></div>
+          <p>budget limit:</p>
+          <p class="text-right font-weight-bold">
+            ${{budget.budget_limit}}</p></div>
       </div>
-      <div class="col-md-3 m-2">
-        <div class="custom-blockColor p-4 rounded">
-          <h5>expenses total: </h5>
-          <h5
+      <div class="col-lg-3 m-2">
+        <div class="custom-blockColor p-2 rounded">
+          <p>expenses total: </p>
+          <p
             class="expense-summary font-weight-bold text-right text-danger"
-          ></h5>
+          ></p>
         </div>
       </div>
-      <div class="col-md-3 m-2">
-        <div class="custom-blockColor p-4 rounded">
-          <h5>remaining total:</h5>
-          <h5
+      <div class="col-lg-3 m-2">
+        <div class="custom-blockColor p-2 rounded">
+          <p>remaining total:</p>
+          <p
             class="remaining-summary font-weight-bold text-right text-info"
-          ></h5>
+          ></p>
         </div>
       </div>
     </div>
     {{!-- Table to hold all expenses logged to budget --}}
-    <div class="table-responsive-sm">
+    <div class="table-responsive-xl">
       <table class="table">
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col"><h5>Date</h5></th>
-            <th scope="col"><h5>Expense</h5></th>
-            <th scope="col"><h5>Description</h5></th>
-            <th scope="col"><h5>Cost</h5></th>
+            <th scope="col">Date</th>
+            <th scope="col">Expense</th>
+            <th scope="col">Description</th>
+            <th scope="col">Cost</th>
           </tr>
         </thead>
         {{!-- Loop through each expense logged to the budget and create a table row with the relevent details --}}
@@ -68,9 +68,9 @@
       <div class="container">
         <div id="total-sum" class="row d-flex justify-content-end">
           <div class="col-4 text-right">
-            <h5>Total Expenses:</h5>
+            <p><b>Total Expenses:</b></p>
             <hr />
-            <h5 id="calculatedExpenses" class="text-weight-bold"></h5>
+            <p id="calculatedExpenses" class="text-weight-bold"></p>
           </div>
         </div>
       </div>
@@ -78,13 +78,13 @@
     {{!-- Button to add new expense - on click will prompt show of expense inputs --}}
     <div class="col-5">
       <button
-        class="btn btn-success custom-text-color mx-2"
+        class="btn btn-success custom-text-color mx-2 mt-2"
         id="new-expense-button"
         type="click"
       >+ expense</button>
       {{!-- Button to confirm add of new expense - will only appear on add expense click --}}
       <button
-        class="btn btn-success custom-text-color"
+        class="btn btn-success custom-text-color mx-2 mt-2"
         id="confirm-expense-button"
         type="click"
       >&#x2713</button>

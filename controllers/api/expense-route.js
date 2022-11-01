@@ -46,15 +46,13 @@ router.delete("/:id", withAuth, async (req, res) => {
         // user_id: req.session.user_id,
       },
     });
-    console.log(`I AM EXPENSE DATA \n =============== \n ${expenseData}`);
+    console.log(expenseData);
 
     if (!expenseData) {
       res.status(404).json({ message: "No expense found with this id!" });
       return;
     }
-    console.log(
-      `I AM returning the next step of expense data \n =============== \n ${expenseData}`
-    );
+    console.log(expenseData);
 
     res.status(200).json(expenseData);
   } catch (err) {
