@@ -43,6 +43,8 @@ This application is distributed under the [MIT](https://opensource.org/licenses/
  Once the application is launmched, you will be able to access the application at http://localhost:3001/
 
   ## Demo
+  [Powerpoint Presentation](https://docs.google.com/presentation/d/1x60qL-0KCJK0H5C04TIlG7lqbgucPx_DX1CqG6vbbo0/edit#slide=id.g12bb6356935_0_0)
+
   [View Deployed Site on Heroku](https://bloodcurdling-vampire-96793.herokuapp.com/)
 
   References Images of Deployed Site:
